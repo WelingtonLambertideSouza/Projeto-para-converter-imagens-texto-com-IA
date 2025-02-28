@@ -120,6 +120,7 @@ celerybeat.pid
 *.sage.py
 
 # Environments
+*.env
 .env
 .venv
 env/
@@ -158,3 +159,37 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# Ignore Tesseract files
+*.tif
+
+# Ignore generated Word files
+*.docx
+
+# Ignore generated JSON files
+*.json
+
+# Ignore temporary files created by tests, backup and tep files
+*.temp
+*.bak
+*.tmp
+
+# Ignore IDE or editor-specific files
+.vscode/
+
+#ignore pytest cache
+.pytest_cache/
+
+# Ignore testing configuration files
+tox.ini
+*.ini
+*.cfg
+*.conf
+
+# Ignore profiling and debugging files
+*.prof
+*.trace
+
+# Ignore Vim temp files
+*.swp
+*.swo
