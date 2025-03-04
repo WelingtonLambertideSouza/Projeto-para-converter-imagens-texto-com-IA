@@ -1,12 +1,11 @@
-import cv2
 import pytesseract
+from PIL import Image
 
-def process_image(image_path):
-    '''Extract text from an image using Tesseract OCR'''
-    image = cv2.imread(image_path)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY) # Convert to grayscale
+# Define the image path
+image_path = "./data/sample.png"
 
-    # Apply OCR
-    text = pytesseract.image_to_string(gray)
+# Use Tesseract with Brazilian Portugese (por)
+text = pytesseract.image_to_string(Image.open(image_path), lang='por')
 
-    return text
+# Print the extracted text
+print(text)
