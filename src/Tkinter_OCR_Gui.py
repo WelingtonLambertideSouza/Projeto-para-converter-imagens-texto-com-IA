@@ -33,18 +33,18 @@ def clear_all():
 # Create GUI
 root = tk.Tk()
 root.title("OCR Text Extractor")
-root.geometry("500x400")
+root.geometry("1000x800")
 
 btn_select = tk.Button(root, text="Select PNG", command=select_file)
 btn_select.pack(pady=10)
-
-text_box = tk.Text(root, height=10, width=50)
-text_box.pack(pady=10)
 
 btn_copy = tk.Button(root, text="Copy Text", command=copy_text)
 btn_copy.pack(pady=5)
 
 btn_clear = tk.Button(root, text="Clear All", command=confirm_clear)
 btn_clear.pack(pady=5)
+
+text_box = tk.Text(root, height=40, width=120)
+text_box.pack(pady=10)
 
 root.mainloop()

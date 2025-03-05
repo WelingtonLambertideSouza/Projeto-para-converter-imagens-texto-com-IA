@@ -193,3 +193,6 @@ tox.ini
 # Ignore Vim temp files
 *.swp
 *.swo
+
+#ignore Folder data
+.data/
