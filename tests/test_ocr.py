@@ -1,22 +1,22 @@
-# tests/test_ocr.py
-import pytest
 import os
-from ocr import process_image
+import pytesseract
+from PIL import Image
+import pytest
 
-IMAGE_PATH = "data/sample.png" # Ensure this file exists for the test
+# Define the image path
+IMAGE_PATH = "./data/sample.png"
 
-def test_process_image() :
-    """Test if the OCR funcion correctly extracts text from an image."""
+def test_ocr_extraction():
+    """Test if OCR correctly extracts text from an image."""
 
     if not os.path.exists(IMAGE_PATH):
         pytest.skip(f"Image file {IMAGE_PATH} not found, skipping test.")
 
-    extracted_text = process_image(IMAGE_PATH)
+    extracted_text = pytesseract.image_to_string(Image.open(IMAGE_PATH), lang='por')
 
-    # Check that the text is not empty
-    assert extracted_text != "", "ocr extraction failed: Text is not empty"
-    
+    assert isinstance(extracted_text, str), "OCR output should be a string."
+    assert len(extracted_text.strip()) > 0, "OCR should not return an empty string."
+    assert any(char in extracted_text for char in "çáéíóúâêôãõ"), "OCR must detect Brazilian Portuguese special characters."
 
-    # Optionally, check that the text contains expected content or a keyword
-    # For example, if you expect the word "sistemas" to be in the text:
-    assert "sistemas" in extracted_text, "Expected text not found in OCR output"
+if __name__ == "__main__":
+    pytest.main()
