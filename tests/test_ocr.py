@@ -4,7 +4,7 @@ from PIL import Image
 import pytest
 
 # Define the image path
-IMAGE_PATH = "./data/sample.png"
+IMAGE_PATH = "./data/sample_test_3.png"
 
 def test_ocr_extraction():
     """Test if OCR correctly extracts text from an image."""
