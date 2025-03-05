@@ -2,9 +2,21 @@ import tkinter as tk
 from tkinter import filedialog, messagebox
 import pytesseract
 from PIL import Image
+import shutil
+import os
+
+# Function to check if Tesseract is installed
+def check_tesseract():
+    if not shutil.which("tesseract"):
+        messagebox.showerror("Error", "Tesseract-OCR not found!\nPlease install it and configure the path.\nLink to download: https://github.com/tesseract-ocr/tesseract")
+        return False
+    return True
 
 # Function to open file dialog and extract text
 def select_file():
+    if not check_tesseract():
+        return # Stop execution if Tesseract is missing
+
     file_path = filedialog.askopenfilename(filetypes=[("PNG Images", "*.png")])
     if file_path:
         extracted_text = pytesseract.image_to_string(Image.open(file_path), lang='por')
